@@ -1,0 +1,37 @@
+.schedule {
+	background-color: white;
+}
+
+
+.schedule h1 {
+	text-align: center;
+	color: #2139C4;
+	text-transform: uppercase;
+	padding: 25px;
+	font-size: 18px;
+}
+.schedule .header span {
+	padding: 0 40px;
+	color: #9497A6;
+	cursor: pointer;
+}
+
+.schedule table {
+	width: 100%;
+}
+
+.schedule thead tr th {
+	color: #9497A6;
+	text-transform: uppercase;
+	height: 50px;
+}
+
+
+.schedule td {
+	color: #9497A6;
+	height: 50px;
+	vertical-align: top;
+}
+.schedule td.invalid {
+	color: #E1E7EC;
+}
