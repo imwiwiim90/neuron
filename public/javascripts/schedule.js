@@ -1,8 +1,7 @@
-$(document).ready(() => {
-
-	let $schedule = $('.schedule');
-
-	function create($schedule) {
+var Schedule = {
+	date: new Date(),
+	create: function($schedule,date,update_cb) {
+		this.date = date;
 		let days = ['s','m','t','w','t','f','s'];
 		let $thead = $schedule.find('thead > tr');
 		$thead.html('');
@@ -11,10 +10,21 @@ $(document).ready(() => {
 			$th.html(day);
 			$thead.append($th);
 		}
-	}
+		this.render($schedule,date);
+		$schedule.find('.next-month').on('click',() => {
+			date.setMonth(date.getMonth() + 1);
+			Schedule.render($schedule,date);
+			update_cb($schedule,appdata.groups);
+		});
+		$schedule.find('.prev-month').on('click',() => {
+			date.setMonth(date.getMonth() - 1);
+			Schedule.render($schedule,date);
+			update_cb($schedule,appdata.groups);
+		})
+	},
 
 
-	function render($schedule,date) {
+	render: function($schedule,date) {
 		date = new Date(date);
 		let month = date.getMonth();
 		let year = date.getFullYear();
@@ -45,32 +55,4 @@ $(document).ready(() => {
 
 	}
 
-	function updateData($schedule,groups) {
-		let i = 0;
-		for (let group of groups) {
-			let date = group.date;
-			let $td = $schedule.find('.date-' + date);
-			$td.append('<br>');
-			let $dot = $(`<span class="oi oi-media-record"></span>`); 
-			$dot.addClass('group-' + colors[i % colors.length]);
-			$td.append($dot);
-			i++;
-		}
-	}
-
-	let date = new Date();
-	create($schedule);
-	render($schedule,date);
-	updateData($schedule,appdata.groups);
-
-	$schedule.find('.next-month').on('click',() => {
-		date.setMonth(date.getMonth() + 1);
-		render($schedule,date);
-		updateData($schedule,appdata.groups);
-	});
-	$schedule.find('.prev-month').on('click',() => {
-		date.setMonth(date.getMonth() - 1);
-		render($schedule,date);
-		updateData($schedule,appdata.groups);
-	})
-})
+}
