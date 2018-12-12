@@ -23,12 +23,12 @@
         </div>
       </header>
 
-      <div class="container" >
-        <h3 class="cover-heading">Login</h3>
+      <div class="container mt-5" >
+        <h3 class="cover-heading">Sign up</h3>
         <p class="lead">Lorem ipsum. Posibly a neuron description</p>
         <div class="row justify-content-md-center">
           <div class="col-md-6">
-            <form class="text-left">
+            <div class="text-left">
               <div class="form-group">
                 <label for="email-input" class="small">Username</label>
                 <input type="email" class="form-control" id="email-input" placeholder="Enter username">
@@ -39,15 +39,18 @@
               </div>
               <div class="form-group">
                 <label for="pass-input" class="small">Confirm password</label>
-                <input type="password" class="form-control" id="pass-input" placeholder="Enter Password">
+                <input type="password" class="form-control" id="confirm-pass-input" placeholder="Enter Password">
               </div>
                <div class="form-group form-check">
                 <input type="checkbox" class="form-check-input" id="check-terms">
                 <label class="form-check-label small" for="check-terms">I agree to the terms of service</label>
               </div>
+              <div class="invalid-feedback">
+                Please choose a username.
+              </div>
               <br>
-              <button type="submit" class="btn btn-primary full-width btn-block">Sign up</button>
-            </form>
+              <button class="btn btn-primary full-width btn-block" id='submit-btn'>Sign up</button>
+            </div>
             <br>
             <br>
           </div>
@@ -70,5 +73,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <script src="/javascripts/signup.js"></script>
   </body>
 </html>
