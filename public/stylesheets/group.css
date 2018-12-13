@@ -1,11 +1,58 @@
-#prueba {
-	background-color: red;
+
+#history {
+	position: relative;
+	min-height: 500px;
+	overflow: scroll;
+	display: block;
 }
 
-#columna-1 { 
-	background-color: green;
+#history .card-header {
+	color: #ACB0C0;
+	text-transform: uppercase;
+	text-align: left;
+	font-weight: 900;
 }
 
-#columna-1 { 
-	background-color: yellow;
+#history .card-body {
+	padding-left: 100px;
+}
+
+#history .profile-img {
+	position: absolute;
+	left: 20px;
+}
+
+
+.moon-container {
+	position: relative;
+	top: 35%;
+	left: 50%;
+	width: 0;
+	padding-inline-start: 0px;
+}
+
+.moon-container li {
+	position: absolute;
+	display: block;
+}
+
+.moon-container .profile-img {
+	border-radius: 50%;
+	overflow: hidden;
+	border: 10px solid #ACB0C0;
+}
+.moon-container .profile-img.success {
+	border-color: #28a745;
+}
+.moon-container .profile-img.danger {
+	border-color: #dc3545;
+}
+
+.moon-container li p {
+	top: 80px;
+	color: #ACB0C0;
+}
+.moon-container li > * {
+	position: absolute;
+	transform: translateX(-50%);
 }

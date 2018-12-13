@@ -5,12 +5,14 @@ $(document).ready(() => {
 		let $container = $('#groups-list');
 		let i = 0;
 		for (let group of groups) {
-			let $item = $('<li>');
+			let $itemcont = $('<a href="/views/group.html">');
+			$itemcont.append('<li>')
+			$item = $itemcont.find('li');
 			$item.html(group.name);
 			let $dot = $(`<span class="oi oi-media-record"></span>`); 
 			$dot.addClass('group-' + colors[i % colors.length]);
 			$item.append($dot);
-			$container.append($item);
+			$container.append($itemcont);
 			i+=1
 		}
 	}
