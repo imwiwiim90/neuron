@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.css">
     <link rel="stylesheet" href="/stylesheets/header.css">
     <link rel="stylesheet" href="/stylesheets/color.css">
-    <link rel="stylesheet" href="/stylesheets/new_group.css">
+    <link rel="stylesheet" href="/stylesheets/new_group_special.css">
     <title>Neuron</title>
   </head>
   <body class=''>
@@ -37,45 +37,52 @@
         </div>
       </div>
       <div id='sub-header'>
-        <h6>New Group</h6>
+        <h6>New Special Group</h6>
       </div>
 
       <div class='container' id='main-container'>
-        <h1 class='text-center'>New group</h1>
-        <form>
-          <div class="form-group">
-            <label for="exampleFormControlInput1">Name</label>
-            <input type="email" class="form-control" id="group-name" placeholder="group name">
-            <div class="invalid-feedback" id='invalid-name'>
-                Please choose a group name.
+        <h1 class='text-center'>New Special group</h1>
+          <div class="row">
+            <div class='col-md-6 offset-md-3'>
+              <div class='form-group'>
+                <label for="exampleFormControlInput1">Name</label>
+                <input type="text" class="form-control" id="group-name" placeholder="group name">
+                <div class="invalid-feedback" id='invalid-name'>
+                    Please choose a username.
+                </div>
+              </div>
+              <div class='form-group'>
+                <label for="exampleFormControlSelect1">Prize</label>
+                <select class="form-control" id="exampleFormControlSelect1">
+                  <option>Random</option>
+                </select>
+              </div>
+              <div class='form-group'>
+                <label for="exampleFormControlSelect1">Frequency</label>
+                <select class="form-control" id="exampleFormControlSelect1">
+                  <option>Daily </option>
+                  <option>Weekly</option>
+                  <option>Monthly</option>
+                </select>
+              </div>
+              <div class='form-group'>
+                <label for="exampleFormControlSelect1">Amount (USD)</label>
+                <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="" value='5'>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                  Monthly Lottery
+                </label>
+              </div>
+            </div>
+            <div class='col-md-6'>
+              
             </div>
           </div>
-          <div class="form-group row">
-            <div class='col-md-8'>
-              <label for="exampleFormControlSelect1">Type</label>
-              <select class="form-control" id="exampleFormControlSelect1">
-                <option>Weekly - $1</option>
-                <option>Weekly - $5</option>
-                <option>Weekly - $10</option>
-                <option>Monthly - $10</option>
-                <option>Monthly - $20</option>
-              </select>
-            </div>
-            <div class='col-md-4'>
-              <label for="exampleFormControlSelect1">Goal </label>
-              <select class="form-control" id="exampleFormControlSelect1">
-                <option>10</option>
-                <option>50</option>
-                <option>100</option>
-                <option>200</option>
-                <option>500</option>
-                <option>1000</option>
-              </select>
-            </div>
-            <div class="d-flex flex-row w-100 justify-content-center mb-5 mt-2">
-              <a href='/views/new_group_special.html'><button type="button" class="btn btn-warning mr-3 text-white">Special Group</button></a>
-              <button id='btn-create-group' type="button" class="btn btn-success">Create</button>
-            </div>
+          <div class="d-flex flex-row w-100 justify-content-center mb-5 mt-2">
+            <button type="button" class="btn btn-warning mr-3 text-white">Special Group</button>
+            <button type="button" class="btn btn-success" id='btn-create-group'>Create</button>
           </div>
       </div>
       

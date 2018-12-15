@@ -9,6 +9,8 @@
 
 #groups-list {
 	padding-left: 0;
+	overflow-y: scroll;
+	max-height: 350px;
 }
 
 #groups-list li {

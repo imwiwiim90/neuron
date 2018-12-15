@@ -1,4 +1,7 @@
 var colors = ['green','red'];
+			
+var user_id = localStorage.getItem('user_id');
+
 
 $(document).ready(() => {
 	function renderGroups(groups) {
@@ -16,10 +19,16 @@ $(document).ready(() => {
 			i+=1
 		}
 	}
-	renderGroups(appdata.groups);
+	renderGroups([]);
+
 
 	let $schedule = $('.schedule');
 
+	$.ajax({
+		url: '/users/groups/' + user_id,
+	}).done((groups) => {
+		renderGroups(groups);
+	})
 
 	Schedule.create($schedule,new Date(),updateData);
 	function updateData($schedule,groups) {
@@ -36,6 +45,4 @@ $(document).ready(() => {
 	}
 
 	updateData($schedule,appdata.groups);
-
-
 });

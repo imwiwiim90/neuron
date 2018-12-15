@@ -30,7 +30,7 @@ $(document).ready(() => {
         </div>
         <p>{{name}}</p>
     </li>`;
-	let no_participants = 6; 
+	let no_participants = 3; 
 	let radius = 150;
 
 	let classes = ['success','danger'];
@@ -42,7 +42,7 @@ $(document).ready(() => {
 	    let $participants = $('#participants');
 	    for (let i = 0; i < no_participants; i++) {
 	    	let user = data.results[i];
-	    	let angle = 2*Math.PI/no_participants*i;
+	    	let angle = 2*Math.PI/no_participants*i - Math.PI/2;
 	    	let template = profile_template
 	    		.replace('{{img-url}}',user.picture.thumbnail)
 	    		.replace('{{class}}',pick_random(classes))
@@ -56,7 +56,15 @@ $(document).ready(() => {
 	    }
 	  }
 	});
+
+    let $cont_new_participant = $('#container-new-participant');
+	$('#btn-new-participant').on('click',() => {
+		$cont_new_participant.show();
+	});	
     
+    $('#btn-cancel-new-participant').on('click',() => {
+		$cont_new_participant.hide();
+	});	
 
 
 });

@@ -56,3 +56,16 @@
 	position: absolute;
 	transform: translateX(-50%);
 }
+
+
+#btn-new-participant {
+	position: relative;
+	margin: auto;
+	top: 180px;
+}
+
+#container-new-participant {
+	position: relative;;
+	top: 180px;
+	display: none;
+}

@@ -11,9 +11,11 @@ $('#btn-submit').on('click', (e) => {
 		method: 'POST',
 		data: data,
 	}).done((response) => {
-		if (response == 'true') {
+		if (response != 'false') {
+			localStorage.setItem('user_id', response);
 			window.location.href = '/views/dashboard.html';
 		} else err_msg('username or password is invalid');
+
 	});
 });
 
