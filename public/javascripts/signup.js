@@ -9,24 +9,29 @@ $(document).ready(() => {
 				url: '/users/signup',
 				method: 'post',
 				data: data,
-			}).done( (response) => {
-				if (response == 'false') err_msg('Username already exist, please choose another one');
-				else window.location.href = '/views/index.html';
-
-
-			})
+				done: (response) => {
+					window.location.href = '/views/index.html';
+				},
+				error: (req,status,err) => {
+					console.log(req.responseJSON.message);
+					err_msg('email already exist');
+				}
+			});
 		else err_msg(data);
 	});
 
 	function validate() {
-		let username = $('#email-input').val();
+		let username = $('#username-input').val();
 		let pass = $('#pass-input').val();
 		let confirm_pass = $('#confirm-pass-input').val();
+		let email = $('#email-input').val();
 
 		if (pass != confirm_pass) return "Passwords are different";
 		if (username == '') return "Please choose a username";
+		if (email == '') return "Please enter an email";
 		return {
 			user: username,
+			email: email,
 			pass: pass,
 		};
 	}

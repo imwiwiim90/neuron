@@ -3,7 +3,7 @@ $(document).ready(() => {
 $('#btn-submit').on('click', (e) => {
 	e.preventDefault();
 	let data = {
-		user: $('#email-input').val(),
+		email: $('#email-input').val(),
 		pass: $('#pass-input').val(),
 	}
 	$.ajax({

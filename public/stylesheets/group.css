@@ -56,7 +56,15 @@
 	position: absolute;
 	transform: translateX(-50%);
 }
-
+.moon-container .profile-img {
+	height: 60px;
+	width: 60px;
+}
+.moon-container .profile-img img {
+	object-fit: contain;
+	object-position: center;
+	height: 40px;
+}
 
 #btn-new-participant {
 	position: relative;

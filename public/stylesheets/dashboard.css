@@ -31,3 +31,8 @@
 #groups-list li span {
 	float: right;
 }
+#groups-list li button {
+	float: right;
+	position: relative;
+	top: -10px;
+}
