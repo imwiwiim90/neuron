@@ -26,9 +26,9 @@ $(document).ready(() => {
 		let confirm_pass = $('#confirm-pass-input').val();
 		let email = $('#email-input').val();
 
-		if (pass != confirm_pass) return "Passwords are different";
-		if (username == '') return "Please choose a username";
-		if (email == '') return "Please enter an email";
+		if (pass != confirm_pass) return "Las contraseñas son diferentes";
+		if (username == '') return "Por favor escoja un Nombre de usuario";
+		if (email == '') return "Por favoe inserte el correo electrónico";
 		return {
 			user: username,
 			email: email,

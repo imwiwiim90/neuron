@@ -2,7 +2,7 @@ var Schedule = {
 	date: new Date(),
 	create: function($schedule,date,update_cb) {
 		this.date = date;
-		let days = ['s','m','t','w','t','f','s'];
+		let days = ['D','L','M','M','J','V','S'];
 		let $thead = $schedule.find('thead > tr');
 		$thead.html('');
 		for (let day of days) {
@@ -29,7 +29,7 @@ var Schedule = {
 		let month = date.getMonth();
 		let year = date.getFullYear();
 
-		let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sept','Oct','Nov','Dec']
+		let months = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sept','Oct','Nov','Dic']
 		let $title = $schedule.find('.title');
 		$title.html(`${months[month]} ${year}`)
 
