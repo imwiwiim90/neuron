@@ -48,6 +48,7 @@ $(document).ready(() => {
 		})
 	}
 	loadGroups();
+	setInterval(loadGroups, 3000);
 
 	Schedule.create($schedule,new Date(),updateData);
 	function updateData($schedule,groups) {

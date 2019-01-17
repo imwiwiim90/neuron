@@ -69,18 +69,23 @@ $(document).ready(() => {
 	  }
 	});
 	*/
-
-	$.ajax({
-		url: '/groups/participants/' + group_id,
-		dataType: 'json',
-		success: function(data) {
-			console.log(data);
-			for (let user of data) {
-				user.picture = '/images/profile.jpeg';
+	function loadParticipants() {
+		$.ajax({
+			url: '/groups/participants/' + group_id,
+			dataType: 'json',
+			success: function(data) {
+				console.log(data);
+				for (let user of data) {
+					user.picture = '/images/profile.jpeg';
+				}
+				setParticipants(data);
 			}
-			setParticipants(data);
-		}
-	})
+		})	
+	}
+
+	loadParticipants();
+	setInterval(loadParticipants,4000);
+	
 
     let $cont_new_participant = $('#container-new-participant');
 	$('#btn-new-participant').on('click',() => {
