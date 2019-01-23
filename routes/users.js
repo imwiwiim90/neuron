@@ -35,6 +35,7 @@ router.post('/signup',function(req, res, next) {
 	let query = 'SELECT * FROM user WHERE email = ?';
 	pool.query(query,[email],(err,rows) => {
 		if (err || rows.length != 0) {
+			console.log(err);
 			res.status(400).send({
 				message: 'email already exist',
 			});
