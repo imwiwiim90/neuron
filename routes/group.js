@@ -2,6 +2,54 @@ var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
 var pool  = mysql.createPool(require('../database/config').pool);
+const nodemailer = require("nodemailer");
+const fs = require('fs')
+var path = require('path');
+
+function validateEmail(email) {
+  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
+}
+
+function sendEmail(dstmail) {
+	fs.readFile(path.join(__dirname, '../mail-template.html'), (err, data) => {
+		if (err) {
+		    console.error(err)
+		    return
+		}
+
+
+		var transporter = nodemailer.createTransport({
+		 service: 'gmail',
+		 auth: {
+		        user: 'ahorrosneuron@gmail.com',
+		        pass: 'neuron2019',
+		    }
+		});
+
+		const mailOptions = {
+			from: 'ahorrosneuron@gmail.com', // sender address
+			to: dstmail, // list of receivers
+			subject: 'Nueva invitación a Neuron', // Subject line
+			html: data,// plain text body
+			attachments: [{
+		        filename: 'Neuron.2b.png',
+		        path: path.join(__dirname, '../public/images/Neuron.2b.png'),
+		        cid: 'unique@neuron.ahorros' //same cid value as in the html img src
+		    }]
+		};
+
+		transporter.sendMail(mailOptions, function (err, info) {
+		    if(err)
+		    	console.log(err)
+		    else
+		     	console.log(info);
+		});
+
+	})
+	
+
+}
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -9,7 +57,8 @@ router.get('/', function(req, res, next) {
 	pool.query(query,(err,rows) => {
 		console.log(err)
 		res.send(rows)
-	})
+	});
+	sendEmail();
   //res.send('respond with a resource');
 });
 
@@ -76,10 +125,18 @@ router.post('/invite/:groupId',function(req,res,next) {
 	`;
 	pool.query(query,[email],function(err,rows) {
 		if (err || !rows || rows.length == 0 ) {
-			console.log(err);
-			res.status(400).send({
-				message: 'invalid email',
-			});
+			console.log("Email not in database");
+
+			if (validateEmail(email)) {
+				console.log("Sending email");
+				sendEmail(email);
+				res.send({
+					message: 'email sent'
+				})
+			} else
+				res.status(400).send({
+					message: 'invalid email',
+				});
 			return;
 		}
 		let userId = rows[0].id;
@@ -111,7 +168,9 @@ router.post('/invite/:groupId',function(req,res,next) {
 					res.status(400).send({ message: 'unkown error'});
 					return;
 				}
-				res.send('success');
+				res.send({
+					'message' : 'success',
+				});
 			})
 		});
 

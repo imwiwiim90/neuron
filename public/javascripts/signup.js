@@ -9,7 +9,7 @@ $(document).ready(() => {
 				url: '/users/signup',
 				method: 'post',
 				data: data,
-				done: (response) => {
+				success: (response) => {
 					window.location.href = '/views/index.html';
 				},
 				error: (req,status,err) => {

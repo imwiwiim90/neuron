@@ -118,10 +118,16 @@ $(document).ready(() => {
 			},
 			success: (data) => {
 				console.log(data);
-				setSuccessMsg('User successfully invited');
+				if (data.message == 'success')
+					setSuccessMsg('Usuario invitado exitosamente');
+				else if (data.message == 'email sent')
+					setSuccessMsg('Se ha enviado un correo de invitacion');
 			},
 			error: function (request, status, error) {
-				setErrMsg(request.responseJSON.message);
+				if (request.responseJSON.message == 'invalid email')
+					setErrMsg("Correo invalido");
+				else
+					setErrMsg(request.responseJSON.message);
 		    }
 
 		})
